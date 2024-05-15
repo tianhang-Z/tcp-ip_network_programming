@@ -26,7 +26,7 @@ int main(int argc,char* argv[]){
 
     char message[]="hello world!";
 
-    if(argc!=2){
+    if(argc!=2){ 
         printf("usage : %s <port>/n",argv[0]);
         exit(1);
     }

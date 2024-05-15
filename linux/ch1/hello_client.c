@@ -1,3 +1,7 @@
+/*
+1,socket
+2,connect
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
