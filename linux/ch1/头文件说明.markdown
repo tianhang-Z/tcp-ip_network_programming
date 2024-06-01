@@ -6,6 +6,6 @@
 #include <string.h>  
 #include <unistd.h>   //提供os访问接口
 #include <arpa/inet.h>   //处理ip
-#include <sys/socket.h>
+#include <sys/socket.h>   
 
 #include <fcntl.h>  //文件处理函数
