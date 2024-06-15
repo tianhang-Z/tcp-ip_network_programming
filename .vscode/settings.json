@@ -7,6 +7,10 @@
         "socket.h": "c",
         "stdio.h": "c",
         "in.h": "c",
-        "features.h": "c"
+        "features.h": "c",
+        "string.h": "c",
+        "stdlib.h": "c",
+        "unistd.h": "c",
+        "netdb.h": "c"
     }
 }

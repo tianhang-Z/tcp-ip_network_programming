@@ -42,7 +42,7 @@ int main(int argc,char *argv[]){
         
         write(sock,message,strlen(message));
         str_len=read(sock,message,BUFF_SIZE-1);
-      ///  message[str_len]=0;
+        message[str_len]=0;
         printf("message from server: %s\n",message);
 
     }

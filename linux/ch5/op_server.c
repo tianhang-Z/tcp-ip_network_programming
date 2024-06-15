@@ -13,7 +13,7 @@ int main(int argc,char *argv[]){
 
     int serv_sock,clnt_sock;
     char message[BUFF_SIZE];
-    int str_len,i;
+    int str_len;
 
     struct sockaddr_in serv_adr,clnt_adr;
     socklen_t clnt_adr_sz;
