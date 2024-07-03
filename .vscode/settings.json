@@ -11,6 +11,7 @@
         "string.h": "c",
         "stdlib.h": "c",
         "unistd.h": "c",
-        "netdb.h": "c"
+        "netdb.h": "c",
+        "signal.h": "c"
     }
 }
