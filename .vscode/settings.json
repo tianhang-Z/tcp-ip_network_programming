@@ -1,17 +1,6 @@
 {
     "files.associations": {
-        "inet.h": "c",
-        "types.h": "c",
-        "stddef.h": "c",
-        "stdint-intn.h": "c",
-        "socket.h": "c",
-        "stdio.h": "c",
         "in.h": "c",
-        "features.h": "c",
-        "string.h": "c",
-        "stdlib.h": "c",
-        "unistd.h": "c",
-        "netdb.h": "c",
-        "signal.h": "c"
+        "socket.h": "c"
     }
 }

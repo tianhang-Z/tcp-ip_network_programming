@@ -7,11 +7,9 @@ int main(int argc,char* argv[]){
     unsigned long host_addr=0x12345678;
     unsigned long net_addr;
 
-    struct  
-    {
-        /* data */
-    };
-    
+    printf("size of long: %d \n",sizeof(long));
+    printf("size of unsigned long: %d \n",sizeof(unsigned long));
+
 
     net_port=htons(host_port);
     net_addr=htonl(host_addr);

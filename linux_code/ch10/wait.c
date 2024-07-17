@@ -17,11 +17,12 @@ int main(int argc,char * argv[]){
             wait(&status);
             if(WIFEXITED(status)) 
                 printf("child send one: %d\n",WEXITSTATUS(status));
-
+            printf("%d\n",status);
+            
             wait(&status);
             if(WIFEXITED(status)) 
                 printf("child send two: %d\n",WEXITSTATUS(status));
-
+            printf("%d\n",status);
             sleep(30);
         }
     }
