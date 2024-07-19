@@ -18,10 +18,11 @@ int main(int argc,char* argv[]){
         printf("usage :%s <group_ip> <port> \n",argv[0]);
         exit(1);
     }
-    join_adr.imr_multiaddr.s_addr=inet_addr(argv[1]);
-    join_adr.imr_interface.s_addr=htons(INADDR_ANY);
+    //加入多播组
+    join_adr.imr_multiaddr.s_addr=inet_addr(argv[1]);   //多播地址
+    join_adr.imr_interface.s_addr=htons(INADDR_ANY);        //主机地址
 
-
+    //
     recv_sock=socket(PF_INET,SOCK_DGRAM,0);
     memset(&adr,0,sizeof(adr));
     adr.sin_family=AF_INET;
@@ -32,9 +33,9 @@ int main(int argc,char* argv[]){
         error_handling("bind() error");
     
     setsockopt(recv_sock,IPPROTO_IP,IP_ADD_MEMBERSHIP,(void* )&join_adr,sizeof(join_adr));
-
+    int str_len=0;
     while(1){
-        int str_len=recvfrom(recv_sock,buf,BUF_SIZE-1,0,NULL,0);
+        str_len=recvfrom(recv_sock,buf,BUF_SIZE-1,0,NULL,0);
         if(str_len<0) break;
 
         buf[str_len]=0;

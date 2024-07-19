@@ -53,13 +53,16 @@ int main(int argc,char *argv[]){
         timeout.tv_sec=5;
         timeout.tv_usec=5000;
 
+        //select进行输入监视
         if((fd_num=select(fd_max+1,&cpy_reads,0,0,&timeout))==-1)
             break;
         if(fd_num==0)
             continue;
         
         for(int i=0;i<fd_max+1;i++){
+            //对于监视的范围 选出有输入信号的
             if(FD_ISSET(i,&cpy_reads)){
+                //serv_sock 有输入 说明有新的连接请求 则fd_set扩展
                 if(i==serv_sock){
                     adr_sz=sizeof(clnt_adr);
                     clnt_sock=accept(serv_sock,(struct sockaddr*)&clnt_adr,&adr_sz);
@@ -67,6 +70,7 @@ int main(int argc,char *argv[]){
                     if(fd_max<clnt_sock) fd_max=clnt_sock;
                     printf("connect client :%d \n",clnt_sock);
                 }
+                //其他有输入 说明有客户端消息
                 else{
                     int str_len;
                     str_len=read(i,buf,BUF_SIZE);   //收到EOF时 str_len为0 此时要断开clnt_sock

@@ -11,8 +11,8 @@
 
 #define BUFF_SIZE 30
 /*
-实现了 1，保存收到的信息
-        2，基于多进程的回声服务端
+实现了 1，保存收到的信息（利用子进程保存）
+    2，基于多进程的回声服务端
 */
 void error_handling(char *message);
 void read_childproc(int sig);
@@ -86,7 +86,7 @@ int main(int argc,char *argv[]){
             continue;
         }
         if(pid==0){
-            //子进程
+            //子进程   回声 并且和保存消息的子进程进行通信
             close(serv_sock);
             while((str_len=read(clnt_sock,message,BUFF_SIZE))!=0){
                 write(clnt_sock,message,str_len);

@@ -471,3 +471,186 @@ readv()可以把接受的数据保存到多个缓冲里（如多个char* buf)
 只要加入多播组，不同网络中的主机都能收到多播数据。
 
 而广播只能面向某个网络（指某个局域网)，只有该网络内的主机可以收到数据。
+
+## ch15套接字和标准IO
+
+### 标准IO函数的优点
+
+移植性好，可以利用缓冲提高性能
+
+创建套接字时，OS生成用于IO的缓冲；而标准IO函数将提供额外的另一缓冲的支持
+
+![image-20240718161826295](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240718161826295.png)
+
+其中套接字的缓冲主要是为了TCP，如数据重发时，重发的数据则存储在套接字的输出缓冲中
+
+而标准IO函数的缓冲则是为了提高性能
+
+### 文件描述符转换FILE结构体指针
+
+<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240718210819025.png" alt="image-20240718210819025" style="zoom:80%;" />
+
+<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240718210828414.png" alt="image-20240718210828414" style="zoom:80%;" />
+
+<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240718210834630.png" alt="image-20240718210834630" style="zoom:80%;" />
+
+### 基于套接字的标准IO函数使用
+
+将sock转换为两个FILE*分别用于读写
+
+```c
+
+        //套接字转换为FILE*
+        readfp=fdopen(clnt_sock,"r");
+        writefp=fdopen(clnt_sock,"w");
+        while(!feof(readfp)){
+            fgets(message,BUFF_SIZE,readfp);
+            fputs(message,writefp);
+            fflush(writefp);
+        }
+        fclose(readfp);
+        fclose(writefp);
+```
+
+## 关于IO分流的其他内容
+
+#### 之前的分流方式
+
+<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240718212544130.png" alt="image-20240718212544130" style="zoom:80%;" />
+
+#### 流分离的目的
+
+* FILE指针按照读和写模式区分
+* 区分IO缓冲 提高缓冲性能
+
+#### 如何半关闭FILE
+
+套接字文件描述符可以用shutdown半关闭，从而发送EOF，关闭写服务，但不关闭读服务
+
+fclose(FILE* )会完全终止套接字 而不是半关闭
+
+<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719115056105.png" alt="image-20240719115056105" style="zoom:80%;" />
+
+==调用fclose销毁任何一个FILE* 都会销毁描述符，同时也销毁了套接字==
+
+<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719120413794.png" alt="image-20240719120413794" style="zoom:80%;" />
+
+##### 如何让FILE*之一销毁 而套接字仍然存在呢
+
+<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719120604700.png" alt="image-20240719120604700" style="zoom:80%;" />
+
+==简而言之  复制文件描述符 基于两个描述符分别创建读写FILE*==
+
+==问题是，销毁一个FILE*之后，销毁一个描述符，但还存在另一个描述符，该描述符可以IO，因此并没有半关闭，也就不会发送EOF==
+
+<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719120628744.png" alt="image-20240719120628744" style="zoom:80%;" />
+
+#### 基于dup()和dup2()函数完成描述符的复制和半关闭
+
+fork是创建两个进程，两个进程中分别有文件描述符原件和副本
+
+==如何在一个进程中完成复制呢==
+
+![image-20240719133541326](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719133541326.png)
+
+两个描述符的值不同
+
+<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719133640018.png" alt="image-20240719133640018" style="zoom:80%;" />
+
+==调用shutdown函数后，无论复制多少描述符，都会进入半关闭 并传递EOF==
+
+## ch17 优于select的epoll
+
+##### select的缺点
+
+![image-20240719153739641](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719153739641.png)
+
+==由于select需要向OS传递监视对象的信息 这会带来很大的负担 且无法通过优化代码来解决==
+
+==selec要监视套接字的变化 因此要借助OS才能完成功能==
+
+##### 如何降低开销呢
+
+==仅向OS传递一次监视对象 当监视范围发送变化时 才通知OS变化的事项==
+
+==linux对这种处理的支持方式是epoll  windows是IOCP==
+
+##### epoll的优点
+
+![image-20240719161528840](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719161528840.png)
+
+### epoll相关函数
+
+类别select  fd_set 存储监视范围 
+
+FD_SET()函数添加或删除监视  
+
+select查询监视对象是否变化
+
+![image-20240719161617942](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719161617942.png)
+
+epoll用epoll_create创建epoll描述符空间 
+
+==epoll_event结构体用于保存变化的文件描述符==
+
+![image-20240719184338460](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719184338460.png)
+
+```
+#include <sys/epoll.h>
+int epoll_create(int size);
+
+int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);
+
+int epoll_wait(int epfd, struct epoll_event *events,
+               int maxevents, int timeout);
+               
+```
+
+#### epoll_create
+
+==向OS请求epfd的存储空间==
+
+<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719171258542.png" alt="image-20240719171258542" style="zoom:80%;" />
+
+#### epol_ctl
+
+注册要监视的epoll描述符
+
+
+
+<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719171307528.png" alt="image-20240719171307528" style="zoom:80%;" />
+
+![image-20240719171315894](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719171315894.png)
+
+##### op
+
+表示动作，它由三个宏来表示
+
+- EPOLL_CTL_ADD：注册新的fd到epfd中；
+- EPOLL_CTL_MOD：修改已经注册的fd的监听事件；
+- EPOLL_CTL_DEL：从epfd中删除一个fd；
+
+##### event
+
+可以是以下几个宏`逻辑或`的组合
+
+| 宏   | 描述 |
+| :--- | :--- |
+| EPOLL**IN** |表示对应的文件描述符可以读（包括对端SOCKET正常关闭|
+|EPOLL**OUT**|表示对应的文件描述符可以写|
+|EPOLL**PRI**|表示对应的文件描述符有紧急的数据可读（这里应该表示有带外数据到来）|
+|EPOLL**ERR**|表示对应的文件描述符发生错误|
+|EPOLL**HUP**|表示对应的文件描述符被挂断|
+|EPOLL**ET**| 将EPOLL设为边缘触发(Edge Triggered)模式，这是相对于水平触发(Level Triggered)来说的|
+|EPOLL**ONESHOT**|只监听一次事件，当监听完这次事件之后，如果还需要继续监听这个socket的话，需要再次把这个socket加入到EPOLL队列里|
+
+#### epoll_wait
+
+![image-20240719172250385](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719172250385.png)
+
+==使用malloc为最终存储发生事件的文件描述符集合epoll_event申请空间==
+
+![image-20240719184509668](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719184509668.png)
+
+### 基于epoll的回声服务器
+

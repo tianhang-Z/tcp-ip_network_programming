@@ -14,6 +14,7 @@
 void error_handling(char *message);
 void read_childproc(int sig);
 
+//多进程服务器端
 int main(int argc,char *argv[]){
 
     if(argc!=2){
@@ -53,6 +54,7 @@ int main(int argc,char *argv[]){
     
     while (1)
     {
+        //每个新建立的连接 进入子进程 而父进程一直while循环查询
         clnt_adr_sz=sizeof(clnt_adr);
         clnt_sock=accept(serv_sock,(struct sockaddr*)&clnt_adr,&clnt_adr_sz);
         if(clnt_sock==-1) 

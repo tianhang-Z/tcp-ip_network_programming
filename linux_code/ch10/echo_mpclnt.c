@@ -6,7 +6,8 @@
 #include <arpa/inet.h>
 #include <sys/socket.h>
 
-
+//IO分离的客户端
+//write_routine进程 shutdown半关闭
 #define BUFF_SIZE 30
 void error_handling(char *message);
 void read_routine(int sock,char* buf);
