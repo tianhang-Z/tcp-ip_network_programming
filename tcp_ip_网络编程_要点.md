@@ -654,3 +654,136 @@ int epoll_wait(int epfd, struct epoll_event *events,
 
 ### 基于epoll的回声服务器
 
+主要代码
+
+```c
+ //epoll相关变量
+    struct epoll_event *ep_event;  //用于设置epoll_wait的event参数 ，保存监视的结果
+    struct epoll_event event;  //用于设置epoll_ctl的event参数
+    int epfd,event_cnt;
+ //epoll配置
+    epfd=epoll_create(EPOLL_SIZE);   //向OS申请epoll描述符的空间
+    ep_event=malloc(sizeof(struct epoll_event)*EPOLL_SIZE);  //为ep_event申请空间
+    event.events=EPOLLIN;
+    event.data.fd=serv_sock;
+    //在epfd中注册serv_sock 监视event中的事件
+    epoll_ctl(epfd,EPOLL_CTL_ADD,serv_sock,&event); 
+
+ while (1)
+    {
+        //等待事件发生
+        event_cnt=epoll_wait(epfd,ep_event,EPOLL_SIZE,-1);
+        if(event_cnt==-1){
+            puts("epoll_wait() error");
+            break;
+        }   
+
+        //依次处理事件
+        for(int i=0;i<event_cnt;i++){
+            //serv_sock 收到数据 扩展epfd监视范围
+            if(ep_event[i].data.fd==serv_sock){
+                clnt_adr_sz=sizeof(clnt_adr);
+                clnt_sock=accept(serv_sock,(struct sockaddr*)&clnt_adr,&clnt_adr_sz);
+                event.events=EPOLLIN;
+                event.data.fd=clnt_sock;
+                epoll_ctl(epfd,EPOLL_CTL_ADD,clnt_sock,&event); 
+                printf("new connect clnt sock :%d \n",clnt_sock);
+            }
+            //其他sock收到数据 回声服务
+            else{
+                str_len=read(ep_event[i].data.fd,message,BUFF_SIZE);
+                //EOF  关闭对应clnt_sock
+                if(str_len==0) {
+                    epoll_ctl(epfd,EPOLL_CTL_DEL,ep_event[i].data.fd,NULL); 
+                    close(ep_event[i].data.fd);
+                    printf("close clnt sock:%d \n",ep_event[i].data.fd);
+                }
+                //回声
+                else{
+                    printf("read str_len:%d \n",str_len);
+                    write(ep_event[i].data.fd,message,str_len);
+                }  
+            }
+        }
+    }
+```
+
+### 条件触发和边缘触发
+
+==LT（Level Trigger，水平触发或条件触发）模式 和 ET（Edge Trigger，边缘触发或边沿触发）==
+
+条件触发：输入缓冲中只要有数据就会一直通知该事件（如：收到了一次数据但没有读取完，则后续还会继续通知
+
+边缘触发：输入缓冲收到数据时仅注册一次事件
+
+#### 实现边缘触发的回声服务器
+
+```c
+//套接字设置非阻塞模式
+int flag=fcntl(fd,F_GETFL,0);
+fcntl(fd,F_SETFL,flag|O_NONBLOCK);
+```
+
+`int errno`用于查看函数错误
+
+边缘触发仅注册一次，因此需要读取完缓冲中的全部数据，read在输入缓冲为空时会返回-1，此时errno的值为EAGAIN
+
+#### 条件触发和边缘触发对比
+
+条件触发：收到数据后如果要延迟处理（不读取完或者不读取），则每次调用epoll_wait都会注册事件，事件会累计
+
+而边缘触发：事件只会注册一次，可以灵活调整收到数据和处理数据的时间点。
+
+## ch18 多线程服务器端实现
+
+##### 多进程模型的缺点：
+
+* 创建进程需要一定的内存和时间开销
+* 进程间数据交换需要IPC技术
+* 进程切换时需要频繁 的上下文切换（eg.进程A切换B进程时，需要 A的信息移除内存，读入B的信息，这就是上下文切换），会耗费很多时间
+
+##### 多线程对应的优点：
+
+* 创建和上下文切换更快
+* 线程交换数据无需特殊技术
+
+##### 多进程和多线程内存结构
+
+多线程共享数据区和堆区
+
+* ![image-20240722144744772](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722144744772.png)
+
+![image-20240722144738351](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722144738351.png)
+
+![image-20240722144846837](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722144846837.png)
+
+### 线程的创建和运行
+
+线程id  线程属性attr 线程函数地址 线程函数参数
+
+![image-20240722144949189](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722144949189.png)
+
+==gcc编译会失败==
+
+问题的原因：pthread不是Linux下的默认的库，也就是在链接的时候，无法找到phread库中哥函数的入口地址，于是链接会失败。
+
+解决：==在gcc编译的时候，附加要加 -lpthread参数即可解决。==
+
+![image-20240722150823801](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722150823801.png)
+
+==为了防止进程结束导致其线程意外终止，需要让进程等待线程==
+
+对二级指针的理解见代码 thread2.c
+
+#### 可在临界区内调用的函数
+
+临界资源：一次仅允许一个进程使用的资源
+
+临界区：进程中访问临界资源的代码
+
+gcc 加`-D_REENTRANT`可以使函数改为线程安全函数
+
+#### 当多线程访问同一变量时 存在问题
+
+### 线程同步
+
