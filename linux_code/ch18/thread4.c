@@ -8,34 +8,43 @@
 void *thread_inc(void *arg);
 void *thread_dec(void *arg);
 long long num=0;
+// pthread_mutex_t mutex;
 
+//错误案例 ：展示多线程访问临界资源导致错误结果
 int main(int argc,char *argv[]){
 
     pthread_t t_id[NUM_THREAD];
-
+    // pthread_mutex_init(&mutex,NULL);
     printf("sizeof(long long) is %ld bytes \n",sizeof(num));
     for(int i=0;i<NUM_THREAD;i++){
-        if(i%20) pthread_create(&(t_id[i]),NULL,thread_inc,NULL);
+        if(i%2) pthread_create(&(t_id[i]),NULL,thread_inc,NULL);
         else pthread_create(&(t_id[i]),NULL,thread_dec,NULL);
     }
     for(int i=0;i<NUM_THREAD;i++){
         pthread_join(t_id[i],NULL);
     }
-
     printf("num is %lld \n",num);
+    // pthread_mutex_destroy(&mutex);
+
     return 0;
 }
 
 
 void *thread_inc(void *arg){
+    // pthread_mutex_lock(&mutex);
     for(int i=0;i<RANGE;i++){
         num+=i;  //临界区
     }
+    // pthread_mutex_unlock(&mutex);
+
     return NULL;
 }
 void *thread_dec(void *arg){
+    // pthread_mutex_lock(&mutex);
     for(int i=0;i<RANGE;i++){
         num-=i;  //临界区
     }
+    // pthread_mutex_unlock(&mutex);
+
     return NULL;
 }
