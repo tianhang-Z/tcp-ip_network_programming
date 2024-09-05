@@ -21,9 +21,9 @@
 
 ## ch2 套接字类型和协议设置
 
-![image-20240704162001944](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240704162001944.png)
+![image-20240704162001944](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240704162001944.png)
 
-![image-20240704162022913](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240704162022913.png)
+![image-20240704162022913](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240704162022913.png)
 
 #### 两种type
 
@@ -53,7 +53,7 @@ struct sockaddr_in
 
 - sin_family地址族字段：IPv4为**AF_INET**
 - sin_zero这个字段一般置为0。
-- ![image-20240704164854238](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240704164854238.png)
+- ![image-20240704164854238](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240704164854238.png)
 
 ### 字节序
 
@@ -93,9 +93,9 @@ char *inet_ntoa(struct in_addr in);
 
 ## ch4 基于TCP的服务端/客户端（1）
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240612105424147.png" alt="image-20240612105424147" style="zoom:67%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240612105424147.png" alt="image-20240612105424147" style="zoom:67%;" />
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240612105439091.png" alt="image-20240612105439091" style="zoom:67%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240612105439091.png" alt="image-20240612105439091" style="zoom:67%;" />
 
 accept会生成一个套接字
 
@@ -139,9 +139,9 @@ ch5解决该问题
 
 ###  TCP 原理
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240611152653515.png" alt="image-20240611152653515" style="zoom:67%;" />	
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240611152653515.png" alt="image-20240611152653515" style="zoom:67%;" />	
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240611152721786.png" alt="image-20240611152721786" style="zoom: 80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240611152721786.png" alt="image-20240611152721786" style="zoom: 80%;" />
 
 #### 三次握手：
 
@@ -151,13 +151,13 @@ B: 好的 ，我已就绪；
 
  A: 谢谢
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240704173727269.png" alt="image-20240704173727269" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240704173727269.png" alt="image-20240704173727269" style="zoom:80%;" />
 
 #### 数据交付过程
 
 按序，超时重传，快速重传
 
-![image-20240704173931801](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240704173931801.png)
+![image-20240704173931801](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240704173931801.png)
 
 #### 四次挥手
 
@@ -167,23 +167,23 @@ B: 稍等   B： 我就绪，可断开
 
 A:好的 谢谢
 
-![image-20240704174011613](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240704174011613.png)
+![image-20240704174011613](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240704174011613.png)
 
 ## ch6基于UDP
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240708150755350.png" alt="image-20240708150755350" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240708150755350.png" alt="image-20240708150755350" style="zoom:80%;" />
 
 #### UDP仅需一个套接字
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240708150901034.png" alt="image-20240708150901034" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240708150901034.png" alt="image-20240708150901034" style="zoom:80%;" />
 
 #### IO函数
 
 UDP不会保持连接状态，每次传输都要添加目的地址
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240620222210838.png" alt="image-20240620222210838" style="zoom:67%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240620222210838.png" alt="image-20240620222210838" style="zoom:67%;" />
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240620222226006.png" alt="image-20240620222226006" style="zoom:67%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240620222226006.png" alt="image-20240620222226006" style="zoom:67%;" />
 
 #### UDP有数据边界
 
@@ -191,11 +191,11 @@ UDP不会保持连接状态，每次传输都要添加目的地址
 
 #### connect 创建连接的UDP
 
-![image-20240708152025956](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240708152025956.png)
+![image-20240708152025956](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240708152025956.png)
 
 ## ch7优雅的断开套接字连接
 
-![image-20240613173209232](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240613173209232.png)
+![image-20240613173209232](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240613173209232.png)
 
 ### 为什么要半关闭
 
@@ -207,13 +207,13 @@ UDP不会保持连接状态，每次传输都要添加目的地址
 
 问题来了，服务端不断开输出流，客户端则会阻塞在read函数；服务端直接close，则无法接受客户端的回复。
 
-![image-20240620160914234](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240620160914234.png)
+![image-20240620160914234](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240620160914234.png)
 
 传输EOF后，客户端read会返回0，即停止接受
 
 ## ch8域名系统
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240613225705993.png" alt="image-20240613225705993" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240613225705993.png" alt="image-20240613225705993" style="zoom:80%;" />
 
 ```
 struct hostent
@@ -231,15 +231,15 @@ struct hostent
 
 ## ch9套接字可选项
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240614164602814.png" alt="image-20240614164602814" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240614164602814.png" alt="image-20240614164602814" style="zoom:80%;" />
 
 ### getsockop&setsockopt
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240708153538697.png" alt="image-20240708153538697" style="zoom: 67%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240708153538697.png" alt="image-20240708153538697" style="zoom: 67%;" />
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240708153626950.png" alt="image-20240708153626950" style="zoom: 67%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240708153626950.png" alt="image-20240708153626950" style="zoom: 67%;" />
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240614164611838.png" alt="image-20240614164611838" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240614164611838.png" alt="image-20240614164611838" style="zoom:80%;" />
 
 ### SO_REUSEADDR
 
@@ -247,21 +247,21 @@ struct hostent
 
 先断开的主机会进入该状态 造成端口有几分钟不能用
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240708154208872.png" alt="image-20240708154208872" style="zoom:67%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240708154208872.png" alt="image-20240708154208872" style="zoom:67%;" />
 
 ### TCP_NODELAY
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240614170950088.png" alt="image-20240614170950088" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240614170950088.png" alt="image-20240614170950088" style="zoom:80%;" />
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240708154133197.png" alt="image-20240708154133197" style="zoom:67%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240708154133197.png" alt="image-20240708154133197" style="zoom:67%;" />
 
 #### 大文件传输要禁用Nagle算法
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240708154516176.png" alt="image-20240708154516176" style="zoom:67%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240708154516176.png" alt="image-20240708154516176" style="zoom:67%;" />
 
 ## ch10多进程服务器端
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240614180712411.png" alt="image-20240614180712411" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240614180712411.png" alt="image-20240614180712411" style="zoom:80%;" />
 
 ### 父和子进程的全局变量
 
@@ -287,15 +287,15 @@ struct hostent
 
 #### 几个销毁僵尸进程的函数
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240618162827362.png" alt="image-20240618162827362" style="zoom:67%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240618162827362.png" alt="image-20240618162827362" style="zoom:67%;" />
 
 ==如果没有终止的子进程，wait会阻塞==
 
 ==而waitpid则不会阻塞==
 
-![image-20240618162841545](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240618162841545.png)
+![image-20240618162841545](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240618162841545.png)
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240618162850458.png" alt="image-20240618162850458" style="zoom:67%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240618162850458.png" alt="image-20240618162850458" style="zoom:67%;" />
 
 ### 信号处理
 
@@ -305,13 +305,13 @@ struct hostent
 
 #### signal函数
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240709235144263.png" alt="image-20240709235144263" style="zoom:67%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240709235144263.png" alt="image-20240709235144263" style="zoom:67%;" />
 
 ==理解返回值为函数指针==，  
 
 其中```void (*func)(int)```是函数指针
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240709234634339.png" alt="image-20240709234634339" style="zoom:67%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240709234634339.png" alt="image-20240709234634339" style="zoom:67%;" />
 
 ```
 signal(SIGCHLD,chld_end)
@@ -322,27 +322,27 @@ signal(SIGCHLD,chld_end)
 
 #### sigaction函数
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240709235809274.png" alt="image-20240709235809274" style="zoom:67%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240709235809274.png" alt="image-20240709235809274" style="zoom:67%;" />
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240710000131284.png" alt="image-20240710000131284" style="zoom:67%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240710000131284.png" alt="image-20240710000131284" style="zoom:67%;" />
 
 ### 基于多任务的并发服务器
 
 ==为每一个客户端提供一个子进程==
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240619231435420.png" alt="image-20240619231435420" style="zoom: 80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240619231435420.png" alt="image-20240619231435420" style="zoom: 80%;" />
 
 ==fork之后，子进程会拥有父进程的文件描述符==。每个端口对应唯一的套接字。==套接字有自己的描述符，被复制之后，一个端口对应多个套接字，只有多个套接字被关掉，套接字才会销毁。==
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240620141237175.png" alt="image-20240620141237175" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240620141237175.png" alt="image-20240620141237175" style="zoom:80%;" />
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240620141243556.png" alt="image-20240620141243556" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240620141243556.png" alt="image-20240620141243556" style="zoom:80%;" />
 
 ### IO分割的客户端
 
 
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240620141417793.png" alt="image-20240620141417793" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240620141417793.png" alt="image-20240620141417793" style="zoom:80%;" />
 
 ## ch11 进程通信 (IPC)
 
@@ -354,55 +354,55 @@ signal(SIGCHLD,chld_end)
 
 
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240620160453112.png" alt="image-20240620160453112" style="zoom:67%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240620160453112.png" alt="image-20240620160453112" style="zoom:67%;" />
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240620161334784.png" alt="image-20240620161334784" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240620161334784.png" alt="image-20240620161334784" style="zoom:80%;" />
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240620161408718.png" alt="image-20240620161408718" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240620161408718.png" alt="image-20240620161408718" style="zoom:80%;" />
 
 ### 双向通信需两个管道
 
 ==管道的问题：数据进入管道后成为无主数据，先从管道read的进程获取数据==
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240620161434714.png" alt="image-20240620161434714" style="zoom: 67%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240620161434714.png" alt="image-20240620161434714" style="zoom: 67%;" />
 
 ## ch12 IO复用
 
 ==多进程意味着占用资源多==	
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240708153313947.png" alt="image-20240708153313947" style="zoom:67%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240708153313947.png" alt="image-20240708153313947" style="zoom:67%;" />
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240623155134793.png" alt="image-20240623155134793" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240623155134793.png" alt="image-20240623155134793" style="zoom:80%;" />
 
 ==IO复用服务器模型，只有服务端一个进程==
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240623155144816.png" alt="image-20240623155144816" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240623155144816.png" alt="image-20240623155144816" style="zoom:80%;" />
 
 ### select函数
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240710004050540.png" alt="image-20240710004050540" style="zoom:67%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240710004050540.png" alt="image-20240710004050540" style="zoom:67%;" />
 
 fd_set存储要监控的文件描述符，第0位设置为0表示要监视描述符0
 
 ==其中fd0是标准输入或输出（console）==
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240711144643789.png" alt="image-20240711144643789" style="zoom:67%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240711144643789.png" alt="image-20240711144643789" style="zoom:67%;" />
 
 FD_ZERO  FD_SET FD_CLR 用于设置描述符
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240716153835327.png" alt="image-20240716153835327" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240716153835327.png" alt="image-20240716153835327" style="zoom:80%;" />
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240711144602403.png" alt="image-20240711144602403"  />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240711144602403.png" alt="image-20240711144602403"  />
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240711144807976.png" alt="image-20240711144807976"  />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240711144807976.png" alt="image-20240711144807976"  />
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240711144818283.png" alt="image-20240711144818283"  />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240711144818283.png" alt="image-20240711144818283"  />
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240711144827451.png" alt="image-20240711144827451" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240711144827451.png" alt="image-20240711144827451" style="zoom:80%;" />
 
-一定要在select函数调用之前设置timeout的值![image-20240716143141483](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240716143141483.png)
+一定要在select函数调用之前设置timeout的值![image-20240716143141483](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240716143141483.png)
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240716154048125.png" alt="image-20240716154048125" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240716154048125.png" alt="image-20240716154048125" style="zoom:80%;" />
 
 ==select函数调用后，发生变化的描述符的标志位还是为1==
 
@@ -414,11 +414,11 @@ FD_ZERO  FD_SET FD_CLR 用于设置描述符
 
 ### send() & recv()    (linux下的)
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240716161547922.png" alt="image-20240716161547922"  />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240716161547922.png" alt="image-20240716161547922"  />
 
-![image-20240716163411264](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240716163411264.png)
+![image-20240716163411264](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240716163411264.png)
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240716163451144.png" alt="image-20240716163451144" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240716163451144.png" alt="image-20240716163451144" style="zoom:80%;" />
 
 #### MSG_OOB 发送紧急消息
 
@@ -428,9 +428,9 @@ FD_ZERO  FD_SET FD_CLR 用于设置描述符
 
 ```send(fd,"890",strlen("890"),MSG_OOB)```
 
-![image-20240716204244881](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240716204244881.png)
+![image-20240716204244881](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240716204244881.png)
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240716204252485.png" alt="image-20240716204252485" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240716204252485.png" alt="image-20240716204252485" style="zoom:80%;" />
 
 紧急指针前面一个字节会被`recv(fd,buf,buf_size,MSG_OOB)`读取，其余部分会被常用输入函数读取
 
@@ -444,13 +444,13 @@ FD_ZERO  FD_SET FD_CLR 用于设置描述符
 
 readv()可以把接受的数据保存到多个缓冲里（如多个char* buf)
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240717145726445.png" alt="image-20240717145726445" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240717145726445.png" alt="image-20240717145726445" style="zoom:80%;" />
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240717145737294.png" alt="image-20240717145737294"  />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240717145737294.png" alt="image-20240717145737294"  />
 
-![image-20240717145750846](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240717145750846.png)
+![image-20240717145750846](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240717145750846.png)
 
-![image-20240717145719179](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240717145719179.png)
+![image-20240717145719179](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240717145719179.png)
 
 ## ch14多播与广播
 
@@ -458,13 +458,13 @@ readv()可以把接受的数据保存到多个缓冲里（如多个char* buf)
 
 
 
-![image-20240717205705586](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240717205705586.png)
+![image-20240717205705586](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240717205705586.png)
 
-![image-20240717205629967](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240717205629967.png)
+![image-20240717205629967](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240717205629967.png)
 
 ### 广播
 
-![image-20240717211749413](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240717211749413.png)
+![image-20240717211749413](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240717211749413.png)
 
 ### 二者区别
 
@@ -480,7 +480,7 @@ readv()可以把接受的数据保存到多个缓冲里（如多个char* buf)
 
 创建套接字时，OS生成用于IO的缓冲；而标准IO函数将提供额外的另一缓冲的支持
 
-![image-20240718161826295](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240718161826295.png)
+![image-20240718161826295](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240718161826295.png)
 
 其中套接字的缓冲主要是为了TCP，如数据重发时，重发的数据则存储在套接字的输出缓冲中
 
@@ -488,11 +488,11 @@ readv()可以把接受的数据保存到多个缓冲里（如多个char* buf)
 
 ### 文件描述符转换FILE结构体指针
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240718210819025.png" alt="image-20240718210819025" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240718210819025.png" alt="image-20240718210819025" style="zoom:80%;" />
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240718210828414.png" alt="image-20240718210828414" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240718210828414.png" alt="image-20240718210828414" style="zoom:80%;" />
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240718210834630.png" alt="image-20240718210834630" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240718210834630.png" alt="image-20240718210834630" style="zoom:80%;" />
 
 ### 基于套接字的标准IO函数使用
 
@@ -512,11 +512,11 @@ readv()可以把接受的数据保存到多个缓冲里（如多个char* buf)
         fclose(writefp);
 ```
 
-## 关于IO分流的其他内容
+## ch16 关于IO分流的其他内容
 
 #### 之前的分流方式
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240718212544130.png" alt="image-20240718212544130" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240718212544130.png" alt="image-20240718212544130" style="zoom:80%;" />
 
 #### 流分离的目的
 
@@ -529,21 +529,21 @@ readv()可以把接受的数据保存到多个缓冲里（如多个char* buf)
 
 fclose(FILE* )会完全终止套接字 而不是半关闭
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719115056105.png" alt="image-20240719115056105" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719115056105.png" alt="image-20240719115056105" style="zoom:80%;" />
 
 ==调用fclose销毁任何一个FILE* 都会销毁描述符，同时也销毁了套接字==
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719120413794.png" alt="image-20240719120413794" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719120413794.png" alt="image-20240719120413794" style="zoom:80%;" />
 
 ##### 如何让FILE*之一销毁 而套接字仍然存在呢
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719120604700.png" alt="image-20240719120604700" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719120604700.png" alt="image-20240719120604700" style="zoom:80%;" />
 
 ==简而言之  复制文件描述符 基于两个描述符分别创建读写FILE*==
 
 ==问题是，销毁一个FILE*之后，销毁一个描述符，但还存在另一个描述符，该描述符可以IO，因此并没有半关闭，也就不会发送EOF，还需要调用shutdown函数==
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719120628744.png" alt="image-20240719120628744" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719120628744.png" alt="image-20240719120628744" style="zoom:80%;" />
 
 #### 基于dup()和dup2()函数完成描述符的复制和半关闭
 
@@ -551,11 +551,11 @@ fork是创建两个进程，两个进程中分别有文件描述符原件和副�
 
 ==如何在一个进程中完成复制呢==
 
-![image-20240719133541326](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719133541326.png)
+![image-20240719133541326](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719133541326.png)
 
 两个描述符的值不同
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719133640018.png" alt="image-20240719133640018" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719133640018.png" alt="image-20240719133640018" style="zoom:80%;" />
 
 ==调用shutdown函数后，无论复制多少描述符，都会进入半关闭 并传递EOF==
 
@@ -563,7 +563,7 @@ fork是创建两个进程，两个进程中分别有文件描述符原件和副�
 
 ##### select的缺点
 
-![image-20240719153739641](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719153739641.png)
+![image-20240719153739641](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719153739641.png)
 
 ==由于select需要向OS传递监视对象的信息 这会带来很大的负担 且无法通过优化代码来解决==
 
@@ -577,7 +577,7 @@ fork是创建两个进程，两个进程中分别有文件描述符原件和副�
 
 ##### epoll的优点
 
-![image-20240719161528840](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719161528840.png)
+![image-20240719161528840](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719161528840.png)
 
 ### epoll相关函数
 
@@ -587,13 +587,13 @@ FD_SET()函数添加或删除监视
 
 select查询监视对象是否变化
 
-![image-20240719161617942](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719161617942.png)
+![image-20240719161617942](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719161617942.png)
 
 epoll用epoll_create创建epoll描述符空间 
 
 ==epoll_event结构体用于保存变化的文件描述符==
 
-![image-20240719184338460](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719184338460.png)
+![image-20240719184338460](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719184338460.png)
 
 ```
 #include <sys/epoll.h>
@@ -610,7 +610,7 @@ int epoll_wait(int epfd, struct epoll_event *events,
 
 ==向OS请求epfd的存储空间==
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719171258542.png" alt="image-20240719171258542" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719171258542.png" alt="image-20240719171258542" style="zoom:80%;" />
 
 #### epol_ctl
 
@@ -618,9 +618,9 @@ int epoll_wait(int epfd, struct epoll_event *events,
 
 
 
-<img src="./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719171307528.png" alt="image-20240719171307528" style="zoom:80%;" />
+<img src="./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719171307528.png" alt="image-20240719171307528" style="zoom:80%;" />
 
-![image-20240719171315894](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719171315894.png)
+![image-20240719171315894](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719171315894.png)
 
 ##### op
 
@@ -646,11 +646,11 @@ int epoll_wait(int epfd, struct epoll_event *events,
 
 #### epoll_wait
 
-![image-20240719172250385](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719172250385.png)
+![image-20240719172250385](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719172250385.png)
 
 ==使用malloc为最终存储发生事件的文件描述符集合epoll_event申请空间==
 
-![image-20240719184509668](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719184509668.png)
+![image-20240719184509668](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240719184509668.png)
 
 ### 基于epoll的回声服务器
 
@@ -751,17 +751,17 @@ fcntl(fd,F_SETFL,flag|O_NONBLOCK);
 
 多线程共享数据区和堆区
 
-* ![image-20240722144744772](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722144744772.png)
+* ![image-20240722144744772](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722144744772.png)
 
-![image-20240722144738351](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722144738351.png)
+![image-20240722144738351](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722144738351.png)
 
-![image-20240722144846837](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722144846837.png)
+![image-20240722144846837](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722144846837.png)
 
 ### 线程的创建和运行
 
 线程id  线程属性attr 线程函数地址 线程函数参数
 
-![image-20240722144949189](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722144949189.png)
+![image-20240722144949189](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722144949189.png)
 
 ==gcc编译会失败==
 
@@ -769,7 +769,7 @@ fcntl(fd,F_SETFL,flag|O_NONBLOCK);
 
 解决：==在gcc编译的时候，附加要加 -lpthread参数即可解决。==
 
-![image-20240722150823801](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722150823801.png)
+![image-20240722150823801](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722150823801.png)
 
 ==为了防止进程结束导致其线程意外终止，需要让进程等待线程==
 
@@ -791,32 +791,32 @@ fcntl(fd,F_SETFL,flag|O_NONBLOCK);
 
 ==调用lock函数时，若有其他线程进入临界区，则lock函数不会返回==
 
-![image-20240722195415569](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722195415569.png)
+![image-20240722195415569](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722195415569.png)
 
-![image-20240722195503014](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722195503014.png)
+![image-20240722195503014](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722195503014.png)
 
-![image-20240722195543933](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722195543933.png)
+![image-20240722195543933](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722195543933.png)
 
 #### 信号量
 
 ==此处只讨论二进制信号量 即只有0和1的信号量==
 
-![image-20240722205907476](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722205907476.png)
+![image-20240722205907476](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722205907476.png)
 
-![image-20240722205950756](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722205950756.png)
+![image-20240722205950756](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240722205950756.png)
 
 ==信号量为1时，调用wait会使信号量减1，然后进入临界区，信号量为0时，调用wait会阻塞==
 
 ### 多线程聊天室实现
 
-![image-20240723120046445](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240723120046445.png)
+![image-20240723120046445](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240723120046445.png)
 
 ==gcc编译时,添加`-D_REENTRANT -lpthread`参数== 
 
 ## ch24 制作http服务器端
 
-![image-20240723152217005](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240723152217005.png)
+![image-20240723152217005](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240723152217005.png)
 
-![image-20240723152207521](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240723152207521.png)
+![image-20240723152207521](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240723152207521.png)
 
-![image-20240723155118703](./image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240723155118703.png)
+![image-20240723155118703](./md_image/image_tcp_ip_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E8%A6%81%E7%82%B9/image-20240723155118703.png)

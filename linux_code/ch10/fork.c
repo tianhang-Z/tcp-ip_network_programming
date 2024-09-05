@@ -16,9 +16,11 @@ int main(int argc,char* argv[]){
     }
 
     if(pid==0){
+        printf("i am child ,pid:%d\n",pid);
         printf("child proc : gval %d, lval %d \n",gval,lval);
     }
     else{
+        printf("i am parent ,pid:%d\n",pid);
         printf("parent proc : gval %d, lval %d \n",gval,lval);
     }
 
